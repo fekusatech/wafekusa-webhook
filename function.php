@@ -2,6 +2,7 @@
 $conndb =  mysqli_connect('localhost', 'u1734578_userglobal', 'u1734578_userglobal', 'u1734578_userglobal');
 $ipwa = "http://{ipanda}:4003";
 $ipwanonport = "http://{ipanda}";
+$groupdefault = "idgroupandauntuknotif";
 
 function get_antrian()
 {
@@ -155,7 +156,8 @@ function getdatabyurl($mode, $company, $jobdesk, $nomorhp, $ads)
 }
 function sendtocs($number, $message, $port,$author = null)
 {
-    $groupid = "120363144431782220@g.us";
+    global $groupdefault;
+    $groupid = $groupdefault;
     $messagenya = "Pesan Dari : $author\nUrl : https://wa.me/{$number} \nMessage : {$message}";
     sendGRP($groupid, $messagenya);
     return true;
